@@ -4,11 +4,21 @@ import Report from '../views/Report.vue'
 import Data from '../views/Data.vue'
 import Paper from '../views/Paper.vue'
 import Teacher from '../views/Teacher.vue'
-import Entry from '../views/Entry.vue'
+import Index from '../views/Index.vue'
+import Login from '../views/Login.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/',
+    redirect: '/login',
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
   {
     path: '/data',
     name: 'data',
@@ -25,16 +35,13 @@ const routes = [
     component: Report
   },
   {
-    path: '/',
-    name: 'entry',
-    component: Entry
+    path: '/index',
+    name: 'index',
+    component: Index
   },
   {
     path: '/paper',
     name: 'paper',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: Paper
   }
 ]

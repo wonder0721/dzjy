@@ -9,7 +9,12 @@
   margin: 0;
   padding: 0;
 }
+html,body{
+  min-width: 1200px;
+  height: 100%;
+}
 #app{
-  overflow: hidden;
+  height: 100%;
+  width: 100%;
 }
 </style>
