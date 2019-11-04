@@ -4,7 +4,7 @@
       <p class="platform">端州区网络阅卷平台</p>
       <div class="content-box">
         <el-breadcrumb separator="/" style="font-size: 16px;">
-          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/index' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item>学生基础数据录入</el-breadcrumb-item>
         </el-breadcrumb>
 

@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Report from '../views/Report.vue'
-import Data from '../views/Data.vue'
-import Paper from '../views/Paper.vue'
-import Teacher from '../views/Teacher.vue'
+import Report from '../components/Report.vue'
+import Data from '../components/Data.vue'
+import Paper from '../components/Paper.vue'
+import Teacher from '../components/Teacher.vue'
 import Index from '../views/Index.vue'
-import Login from '../views/Login.vue'
+import Login from '../components/Login.vue'
 
 Vue.use(VueRouter)
 

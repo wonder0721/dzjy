@@ -1,0 +1,105 @@
+<template>
+  <div class="login">
+    <div class="login-box">
+      <h2>端州区教育局阅卷平台</h2>
+      <div class="content-box">
+        <img src="../assets/group.png" alt="img" />
+        <div class="form-box">
+          <h4>用户登录</h4>
+          <el-input v-model="username" prefix-icon="el-icon-search" placeholder="请输入用户名" style="margin-bottom: 22px"></el-input>
+          <el-input type="password" v-model="password" prefix-icon="el-icon-search" placeholder="请输入密码"></el-input>
+          <routerLink to="/index" class="login-btn">登录</routerLink>
+          <p class="tips">如忘记密码, 请联系管理员</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.login {
+  min-height: 100%;
+  background-color: #1f74fd;
+  background-image: url("../assets/bg.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  .login-box {
+    width: 880px;
+    height: 560px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    color: #5897ff;
+    border-radius: 6px;
+    text-align: center;
+    h2 {
+      margin-top: 39px;
+      margin-bottom: 46px;
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: 5px;
+    }
+    .content-box {
+      position: absolute;
+      width: 100%;
+      height: 400px;
+      top: 120px;
+      // background-color: lightblue;
+      img {
+        position: absolute;
+        left: 80px;
+        top: 0;
+      }
+      .form-box {
+        padding-top: 50px;
+        position: absolute;
+        right: 80px;
+        top: 0;
+        height: 400px;
+        width: 300px;
+        // background-color: lightyellow;
+        h4 {
+          font-size: 18px;
+          color: #414141;
+          text-align: left;
+          margin-bottom: 18px;
+        }
+        .tips {
+          font-size: 12px;
+          color: #838383;
+        }
+        .login-btn {
+          display: block;
+          height: 40px;
+          width: 100%;
+          line-height: 40px;
+          color: #fff;
+          border-radius: 2px;
+          background-color: #409EFF;
+          text-align: center;
+          text-decoration: none;
+          font-size: 16px;
+          letter-spacing: 10px;
+          margin: 68px 0 40px;
+        }
+        .login-btn:hover {
+          background-color: #1862ff;
+        }
+      }
+    }
+  }
+}
+</style>
+
+<script>
+export default {
+  data() {
+    return {
+      username: '',
+      password: '',
+    };
+  }
+};
+</script>

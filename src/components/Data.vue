@@ -4,7 +4,7 @@
       <p class="platform">端州区网络阅卷平台</p>
       <div class="content-box">
         <el-breadcrumb separator="/" style="font-size: 16px;">
-          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/index' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item>学生基础数据录入</el-breadcrumb-item>
         </el-breadcrumb>
 
@@ -36,7 +36,7 @@
             :current-page="currentPage1"
             :page-sizes="[10, 20, 30, 40]"
             :page-size="pagesize"
-            :total="100"
+            :total="50"
             layout="prev, pager, next, sizes, jumper"
           ></el-pagination>
         </div>
