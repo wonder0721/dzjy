@@ -35,21 +35,21 @@
           header-cell-class-name="table-header"
           cell-class-name="table-cell"
         >
-          <el-table-column prop="a" label="实考"></el-table-column>
-          <el-table-column prop="b" label="平均分"></el-table-column>
-          <el-table-column prop="c" label="极均分"></el-table-column>
-          <el-table-column prop="d" label="最高分"></el-table-column>
-          <el-table-column prop="e" label="最低分"></el-table-column>
-          <el-table-column prop="f" label="全距"></el-table-column>
-          <el-table-column prop="g" label="得分率"></el-table-column>
-          <el-table-column prop="h" label="标准差"></el-table-column>
-          <el-table-column prop="i" label="众数"></el-table-column>
-          <el-table-column prop="j" label="贡献值"></el-table-column>
-          <el-table-column prop="k" label="超均率"></el-table-column>
-          <el-table-column prop="l" label="比均率"></el-table-column>
-          <el-table-column prop="m" label="优秀数"></el-table-column>
-          <el-table-column prop="n" label="优秀率"></el-table-column>
-          <el-table-column prop="o" label="及格数"></el-table-column>
+          <el-table-column prop="a" label="实考" width="70"></el-table-column>
+          <el-table-column prop="b" label="平均分" width="70"></el-table-column>
+          <el-table-column prop="c" label="极均分" width="70"></el-table-column>
+          <el-table-column prop="d" label="最高分" width="70"></el-table-column>
+          <el-table-column prop="e" label="最低分" width="70"></el-table-column>
+          <el-table-column prop="f" label="全距" width="70"></el-table-column>
+          <el-table-column prop="g" label="得分率" width="70"></el-table-column>
+          <el-table-column prop="h" label="标准差" width="70"></el-table-column>
+          <el-table-column prop="i" label="众数" width="70"></el-table-column>
+          <el-table-column prop="j" label="贡献值" width="70"></el-table-column>
+          <el-table-column prop="k" label="超均率" width="70"></el-table-column>
+          <el-table-column prop="l" label="比均率" width="70"></el-table-column>
+          <el-table-column prop="m" label="优秀数" width="70"></el-table-column>
+          <el-table-column prop="n" label="优秀率" width="70"></el-table-column>
+          <el-table-column prop="o" label="及格数" width="70"></el-table-column>
           <el-table-column prop="p" label="及格率"></el-table-column>
         </el-table>
         <el-table
@@ -59,23 +59,23 @@
           header-cell-class-name="table-header"
           cell-class-name="table-cell"
         >
-          <el-table-column prop="class" label="单位" width="150px"></el-table-column>
-          <el-table-column prop="a" label="实考"></el-table-column>
-          <el-table-column prop="b" label="平均分"></el-table-column>
-          <el-table-column prop="c" label="极均分"></el-table-column>
-          <el-table-column prop="d" label="最高分"></el-table-column>
-          <el-table-column prop="e" label="最低分"></el-table-column>
-          <el-table-column prop="f" label="全距"></el-table-column>
-          <el-table-column prop="g" label="得分率"></el-table-column>
-          <el-table-column prop="h" label="标准差"></el-table-column>
-          <el-table-column prop="i" label="众数"></el-table-column>
-          <el-table-column prop="j" label="贡献值"></el-table-column>
-          <el-table-column prop="k" label="超均率"></el-table-column>
-          <el-table-column prop="l" label="比均率"></el-table-column>
-          <el-table-column prop="m" label="优秀数"></el-table-column>
-          <el-table-column prop="n" label="优秀率"></el-table-column>
-          <el-table-column prop="o" label="及格数"></el-table-column>
-          <el-table-column prop="p" label="及格率"></el-table-column>
+          <el-table-column prop="class" label="单位" width="110" fixed></el-table-column>
+          <el-table-column prop="a" label="实考" width="70"></el-table-column>
+          <el-table-column prop="b" label="平均分" width="70"></el-table-column>
+          <el-table-column prop="c" label="极均分" width="70"></el-table-column>
+          <el-table-column prop="d" label="最高分" width="70"></el-table-column>
+          <el-table-column prop="e" label="最低分" width="70"></el-table-column>
+          <el-table-column prop="f" label="全距" width="70"></el-table-column>
+          <el-table-column prop="g" label="得分率" width="70"></el-table-column>
+          <el-table-column prop="h" label="标准差" width="70"></el-table-column>
+          <el-table-column prop="i" label="众数" width="70"></el-table-column>
+          <el-table-column prop="j" label="贡献值" width="70"></el-table-column>
+          <el-table-column prop="k" label="超均率" width="70"></el-table-column>
+          <el-table-column prop="l" label="比均率" width="70"></el-table-column>
+          <el-table-column prop="m" label="优秀数" width="70"></el-table-column>
+          <el-table-column prop="n" label="优秀率" width="70"></el-table-column>
+          <el-table-column prop="o" label="及格数" width="70"></el-table-column>
+          <el-table-column prop="p" label="及格率" width="70"></el-table-column>
         </el-table>
 
         <div class="pagination">
@@ -84,7 +84,7 @@
             :current-page="currentPage1"
             :page-sizes="[10, 20, 30, 40]"
             :page-size="5"
-            :total="100"
+            :total="50"
             layout="prev, pager, next, sizes, jumper"
           ></el-pagination>
         </div>

@@ -7,6 +7,9 @@ import axios from 'axios'
 import Qs from 'qs'
 Vue.prototype.$axios = axios
 
+// 引入第三方字体图标 @符号表示当前工程的src目录，打包工具会自动去src下去找文件
+import './assets/iconfont/iconfont.css'
+
 //引入mock数据，关闭则注释该行
 require('./mock'); 
 

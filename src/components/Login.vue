@@ -6,8 +6,8 @@
         <img src="../assets/group.png" alt="img" />
         <div class="form-box">
           <h4>用户登录</h4>
-          <el-input v-model="username" prefix-icon="el-icon-search" placeholder="请输入用户名" style="margin-bottom: 22px"></el-input>
-          <el-input type="password" v-model="password" prefix-icon="el-icon-search" placeholder="请输入密码"></el-input>
+          <el-input v-model="username" prefix-icon="iconfont dzjy-user" placeholder="请输入用户名" style="margin-bottom: 22px"></el-input>
+          <el-input type="password" v-model="password" prefix-icon="iconfont dzjy-password" placeholder="请输入密码"></el-input>
           <routerLink to="/index" class="login-btn">登录</routerLink>
           <p class="tips">如忘记密码, 请联系管理员</p>
         </div>
@@ -59,10 +59,24 @@
         top: 0;
         height: 400px;
         width: 300px;
-        // background-color: lightyellow;
+        /deep/ .el-input{
+          .iconfont{
+            font-size: 26px;
+          }
+          .el-input__prefix{
+            left: 10px;
+          }
+          .el-input__inner{
+            padding-left: 60px;
+          }
+          .el-input__icon{
+            padding-right: 10px;
+            border-right: 1px #C0C4CC solid;
+          }
+        }
         h4 {
           font-size: 18px;
-          color: #414141;
+          color: #646464;
           text-align: left;
           margin-bottom: 18px;
         }
@@ -86,6 +100,9 @@
         }
         .login-btn:hover {
           background-color: #1862ff;
+        }
+        .login-btn:active {
+          background-color: #409EFF;
         }
       }
     }
