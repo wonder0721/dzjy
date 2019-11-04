@@ -6,9 +6,24 @@
         <img src="../assets/group.png" alt="img" />
         <div class="form-box">
           <h4>用户登录</h4>
-          <el-input v-model="username" prefix-icon="iconfont dzjy-user" placeholder="请输入用户名" style="margin-bottom: 22px"></el-input>
-          <el-input type="password" v-model="password" prefix-icon="iconfont dzjy-password" placeholder="请输入密码"></el-input>
-          <routerLink to="/index" class="login-btn">登录</routerLink>
+
+          <el-form :model="loginForm" :rules="rules" ref="loginForm">
+            <el-form-item prop="name">
+              <el-input v-model="loginForm.name" prefix-icon="iconfont dzjy-user" placeholder="请输入用户名"></el-input>
+            </el-form-item>
+            <el-form-item prop="password">
+              <el-input
+                type="password"
+                v-model="loginForm.password"
+                prefix-icon="iconfont dzjy-password"
+                placeholder="请输入密码"
+              ></el-input>
+            </el-form-item>
+            <el-form-item>
+              <a class="login-btn" @click="submitForm('loginForm')">登录</a>
+            </el-form-item>
+          </el-form>
+
           <p class="tips">如忘记密码, 请联系管理员</p>
         </div>
       </div>
@@ -59,19 +74,19 @@
         top: 0;
         height: 400px;
         width: 300px;
-        /deep/ .el-input{
-          .iconfont{
+        /deep/ .el-input {
+          .iconfont {
             font-size: 26px;
           }
-          .el-input__prefix{
+          .el-input__prefix {
             left: 10px;
           }
-          .el-input__inner{
+          .el-input__inner {
             padding-left: 60px;
           }
-          .el-input__icon{
+          .el-input__icon {
             padding-right: 10px;
-            border-right: 1px #C0C4CC solid;
+            border-right: 1px #c0c4cc solid;
           }
         }
         h4 {
@@ -91,18 +106,18 @@
           line-height: 40px;
           color: #fff;
           border-radius: 2px;
-          background-color: #409EFF;
+          background-color: #409eff;
           text-align: center;
           text-decoration: none;
           font-size: 16px;
           letter-spacing: 10px;
-          margin: 68px 0 40px;
+          margin: 40px 0 20px;
         }
         .login-btn:hover {
           background-color: #1862ff;
         }
         .login-btn:active {
-          background-color: #409EFF;
+          background-color: #409eff;
         }
       }
     }
@@ -114,9 +129,34 @@
 export default {
   data() {
     return {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
+      loginForm: {
+        name: "",
+        password: "",
+      },
+       rules: {
+          name: [
+            { required: true, message: '请输入用户名', trigger: 'blur' },
+          ],
+          password: [
+            { required: true, message: '请输入密码', trigger: 'blur' }
+          ],
+       }
     };
+  },
+  methods:{
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.$message('登录成功');
+          this.$router.push({name:'index'})
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      })
+    }
   }
 };
 </script>

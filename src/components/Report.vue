@@ -9,7 +9,7 @@
         </el-breadcrumb>
 
         <div class="selector">
-          <el-select v-model="value1" placeholder="请选择" size="small" @change="schoolChange()">
+          <el-select v-model="value1" placeholder="请选择" size="small" @change="schoolChange(value1)">
             <el-option
               v-for="item in options1"
               :key="item.value"
@@ -18,7 +18,12 @@
             ></el-option>
           </el-select>
 
-          <el-select v-model="value2" placeholder="请选择" size="small" @change="subjectChange()">
+          <el-select
+            v-model="value2"
+            placeholder="请选择"
+            size="small"
+            @change="subjectChange(value2)"
+          >
             <el-option
               v-for="item in options2"
               :key="item.value"
@@ -81,6 +86,7 @@
         <div class="pagination">
           <el-pagination
             background
+            @current-change="handleCurrentChange"
             :current-page="currentPage1"
             :page-sizes="[10, 20, 30, 40]"
             :page-size="5"
@@ -158,34 +164,62 @@ export default {
       currentPage1: 1,
       options1: [
         {
-          value: "选项1",
+          value: "school_1",
           label: "重庆市第一中学"
         },
         {
-          value: "选项2",
+          value: "school_2",
           label: "重庆市第十中学"
         }
       ],
-      value1: "选项1",
+      value1: "school_1",
       options2: [
         {
-          value: "选项1",
+          value: "subject_1",
           label: "语文"
         },
         {
-          value: "选项2",
+          value: "subject_2",
           label: "数学"
         }
       ],
-      value2: "选项1"
+      value2: "subject_1"
     };
   },
   methods: {
+    handleCurrentChange(currentPage) {
+      console.log(currentPage);
+      this.$axios
+        .get("/report/report" + currentPage)
+        .then(res => {
+          {
+              (this.totalTableData = res.data.totalTableData),
+              (this.classTableData = res.data.classTableData);
+          }
+        })
+        .catch(err => console.log(err));
+    },
     schoolChange(value) {
       console.log("school has changed", value);
+      this.$axios
+        .get("/report/" + value)
+        .then(res => {
+          // console.log(res),
+            (this.totalTableData = res.data.totalTableData),
+            (this.classTableData = res.data.classTableData);
+        })
+        .catch(error => console.log(error));
     },
     subjectChange(value) {
       console.log("subject has changed", value);
+      this.$axios
+        .get("/report/" + value)
+        .then(res => {
+          console.log(res),
+            (this.totalTableData = res.data.totalTableData),
+            (this.classTableData = res.data.classTableData);
+        })
+        .catch(error => console.log(error));
     }
   },
   created() {
