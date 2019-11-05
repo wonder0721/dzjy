@@ -38,6 +38,7 @@
   background-image: url("../assets/bg.png");
   background-size: 100%;
   background-repeat: no-repeat;
+  overflow: hidden;
   .login-box {
     width: 880px;
     height: 560px;

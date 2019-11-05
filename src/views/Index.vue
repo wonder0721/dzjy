@@ -38,9 +38,9 @@
 }
 .container-box {
   width: 100%;
+  max-width: 1200px;
   height: 100%;
   margin: 0 auto;
-  overflow: hidden;
   .platform {
     height: 50px;
     width: 100%;
@@ -71,6 +71,7 @@
       border-radius: 10px;
       // box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
       transition: all 0.3s;
+      margin-bottom: 30px;
       .topicon {
         width: 100px;
         height: 100px;

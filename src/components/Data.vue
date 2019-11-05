@@ -16,7 +16,7 @@
           header-cell-class-name="table-header"
           cell-class-name="table-cell"
         >
-          <el-table-column prop="school" label="学校"></el-table-column>
+          <el-table-column prop="school" label="学校" width="220"></el-table-column>
           <el-table-column prop="grade" label="年级" width="180"></el-table-column>
           <el-table-column prop="class" label="班级" width="180"></el-table-column>
           <el-table-column prop="name" label="姓名"></el-table-column>
@@ -52,7 +52,8 @@
 }
 
 .container-box {
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
   padding-bottom: 50px;
