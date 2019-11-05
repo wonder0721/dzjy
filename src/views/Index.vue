@@ -37,7 +37,7 @@
   height: 100%;
 }
 .container-box {
-  width: 1200px;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
   overflow: hidden;
@@ -51,15 +51,16 @@
     text-align: center;
   }
   #nav {
-    width: 1200px;
+    width: 100%;
     height: 300px;
     background-color: #fff;
     margin: 0 auto;
     margin-top: 105px;
     text-align: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
     .card {
       width: 250px;
       height: 280px;
