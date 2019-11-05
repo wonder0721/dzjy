@@ -39,12 +39,13 @@
 .container-box {
   width: 100%;
   max-width: 1200px;
+  overflow: hidden;
   height: 100%;
   margin: 0 auto;
   .platform {
     height: 50px;
     width: 100%;
-    margin-top: 125px;
+    margin-top: 25px;
     font-size: 40px;
     color: #5896ff;
     line-height: 50px;
@@ -62,8 +63,8 @@
     align-items: center;
     flex-wrap: wrap;
     .card {
-      width: 250px;
-      height: 280px;
+      width: 20%;
+      height: 260px;
       background-color: #fff;
       position: relative;
       cursor: pointer;

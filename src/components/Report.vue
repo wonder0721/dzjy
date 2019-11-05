@@ -107,7 +107,7 @@
 
 .container-box {
   width: 100%;
-  max-width: 1200px;
+  max-width: 950px;
   margin: 0 auto;
   padding-bottom: 50px;
   overflow: hidden;
