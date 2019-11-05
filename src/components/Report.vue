@@ -1,98 +1,105 @@
 <template>
   <div class="report">
-    <div class="container-box">
-      <p class="platform">端州区网络阅卷平台</p>
-      <div class="content-box">
-        <el-breadcrumb separator="/" style="font-size: 16px;">
-          <el-breadcrumb-item :to="{ path: '/index' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item>学生基础数据录入</el-breadcrumb-item>
-        </el-breadcrumb>
+    <div class="wrapper">
+      <div class="container-box">
+        <p class="platform">端州区网络阅卷平台</p>
+        <div class="content-box">
+          <el-breadcrumb separator="/" style="font-size: 16px;">
+            <el-breadcrumb-item :to="{ path: '/index' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item>学生基础数据录入</el-breadcrumb-item>
+          </el-breadcrumb>
 
-        <div class="selector">
-          <el-select v-model="value1" placeholder="请选择" size="small" @change="schoolChange(value1)">
-            <el-option
-              v-for="item in options1"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            ></el-option>
-          </el-select>
+          <div class="selector">
+            <el-select
+              v-model="value1"
+              placeholder="请选择"
+              size="small"
+              @change="schoolChange(value1)"
+            >
+              <el-option
+                v-for="item in options1"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
+            </el-select>
 
-          <el-select
-            v-model="value2"
-            placeholder="请选择"
-            size="small"
-            @change="subjectChange(value2)"
+            <el-select
+              v-model="value2"
+              placeholder="请选择"
+              size="small"
+              @change="subjectChange(value2)"
+            >
+              <el-option
+                v-for="item in options2"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
+            </el-select>
+          </div>
+
+          <el-table
+            :data="totalTableData"
+            border
+            style="width: 100%; margin-top: 20px;"
+            header-cell-class-name="table-header"
+            cell-class-name="table-cell"
           >
-            <el-option
-              v-for="item in options2"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            ></el-option>
-          </el-select>
-        </div>
+            <el-table-column prop="a" label="实考" width="70"></el-table-column>
+            <el-table-column prop="b" label="平均分" width="70"></el-table-column>
+            <el-table-column prop="c" label="极均分" width="70"></el-table-column>
+            <el-table-column prop="d" label="最高分" width="70"></el-table-column>
+            <el-table-column prop="e" label="最低分" width="70"></el-table-column>
+            <el-table-column prop="f" label="全距" width="70"></el-table-column>
+            <el-table-column prop="g" label="得分率" width="70"></el-table-column>
+            <el-table-column prop="h" label="标准差" width="70"></el-table-column>
+            <el-table-column prop="i" label="众数" width="70"></el-table-column>
+            <el-table-column prop="j" label="贡献值" width="70"></el-table-column>
+            <el-table-column prop="k" label="超均率" width="70"></el-table-column>
+            <el-table-column prop="l" label="比均率" width="70"></el-table-column>
+            <el-table-column prop="m" label="优秀数" width="70"></el-table-column>
+            <el-table-column prop="n" label="优秀率" width="70"></el-table-column>
+            <el-table-column prop="o" label="及格数" width="70"></el-table-column>
+            <el-table-column prop="p" label="及格率"></el-table-column>
+          </el-table>
+          <el-table
+            :data="classTableData"
+            border
+            style="width: 100%; margin-top: 20px;"
+            header-cell-class-name="table-header"
+            cell-class-name="table-cell"
+          >
+            <el-table-column prop="class" label="单位" width="110" fixed></el-table-column>
+            <el-table-column prop="a" label="实考" width="70"></el-table-column>
+            <el-table-column prop="b" label="平均分" width="70"></el-table-column>
+            <el-table-column prop="c" label="极均分" width="70"></el-table-column>
+            <el-table-column prop="d" label="最高分" width="70"></el-table-column>
+            <el-table-column prop="e" label="最低分" width="70"></el-table-column>
+            <el-table-column prop="f" label="全距" width="70"></el-table-column>
+            <el-table-column prop="g" label="得分率" width="70"></el-table-column>
+            <el-table-column prop="h" label="标准差" width="70"></el-table-column>
+            <el-table-column prop="i" label="众数" width="70"></el-table-column>
+            <el-table-column prop="j" label="贡献值" width="70"></el-table-column>
+            <el-table-column prop="k" label="超均率" width="70"></el-table-column>
+            <el-table-column prop="l" label="比均率" width="70"></el-table-column>
+            <el-table-column prop="m" label="优秀数" width="70"></el-table-column>
+            <el-table-column prop="n" label="优秀率" width="70"></el-table-column>
+            <el-table-column prop="o" label="及格数" width="70"></el-table-column>
+            <el-table-column prop="p" label="及格率" width="70"></el-table-column>
+          </el-table>
 
-        <el-table
-          :data="totalTableData"
-          border
-          style="width: 100%; margin-top: 20px;"
-          header-cell-class-name="table-header"
-          cell-class-name="table-cell"
-        >
-          <el-table-column prop="a" label="实考" width="70"></el-table-column>
-          <el-table-column prop="b" label="平均分" width="70"></el-table-column>
-          <el-table-column prop="c" label="极均分" width="70"></el-table-column>
-          <el-table-column prop="d" label="最高分" width="70"></el-table-column>
-          <el-table-column prop="e" label="最低分" width="70"></el-table-column>
-          <el-table-column prop="f" label="全距" width="70"></el-table-column>
-          <el-table-column prop="g" label="得分率" width="70"></el-table-column>
-          <el-table-column prop="h" label="标准差" width="70"></el-table-column>
-          <el-table-column prop="i" label="众数" width="70"></el-table-column>
-          <el-table-column prop="j" label="贡献值" width="70"></el-table-column>
-          <el-table-column prop="k" label="超均率" width="70"></el-table-column>
-          <el-table-column prop="l" label="比均率" width="70"></el-table-column>
-          <el-table-column prop="m" label="优秀数" width="70"></el-table-column>
-          <el-table-column prop="n" label="优秀率" width="70"></el-table-column>
-          <el-table-column prop="o" label="及格数" width="70"></el-table-column>
-          <el-table-column prop="p" label="及格率"></el-table-column>
-        </el-table>
-        <el-table
-          :data="classTableData"
-          border
-          style="width: 100%; margin-top: 20px;"
-          header-cell-class-name="table-header"
-          cell-class-name="table-cell"
-        >
-          <el-table-column prop="class" label="单位" width="110" fixed></el-table-column>
-          <el-table-column prop="a" label="实考" width="70"></el-table-column>
-          <el-table-column prop="b" label="平均分" width="70"></el-table-column>
-          <el-table-column prop="c" label="极均分" width="70"></el-table-column>
-          <el-table-column prop="d" label="最高分" width="70"></el-table-column>
-          <el-table-column prop="e" label="最低分" width="70"></el-table-column>
-          <el-table-column prop="f" label="全距" width="70"></el-table-column>
-          <el-table-column prop="g" label="得分率" width="70"></el-table-column>
-          <el-table-column prop="h" label="标准差" width="70"></el-table-column>
-          <el-table-column prop="i" label="众数" width="70"></el-table-column>
-          <el-table-column prop="j" label="贡献值" width="70"></el-table-column>
-          <el-table-column prop="k" label="超均率" width="70"></el-table-column>
-          <el-table-column prop="l" label="比均率" width="70"></el-table-column>
-          <el-table-column prop="m" label="优秀数" width="70"></el-table-column>
-          <el-table-column prop="n" label="优秀率" width="70"></el-table-column>
-          <el-table-column prop="o" label="及格数" width="70"></el-table-column>
-          <el-table-column prop="p" label="及格率" width="70"></el-table-column>
-        </el-table>
-
-        <div class="pagination">
-          <el-pagination
-            background
-            @current-change="handleCurrentChange"
-            :current-page="currentPage1"
-            :page-sizes="[10, 20, 30, 40]"
-            :page-size="5"
-            :total="50"
-            layout="prev, pager, next, sizes, jumper"
-          ></el-pagination>
+          <div class="pagination">
+            <el-pagination
+              background
+              @current-change="handleCurrentChange"
+              :current-page="currentPage1"
+              :page-sizes="[10, 20, 30, 40]"
+              :page-size="5"
+              :total="50"
+              layout="prev, pager, next, sizes, jumper"
+            ></el-pagination>
+          </div>
         </div>
       </div>
     </div>
@@ -104,10 +111,14 @@
   background-color: #f0f2f5;
   min-height: 100%;
 }
-
+.wrapper {
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
 .container-box {
   width: 100%;
-  max-width: 950px;
+  max-width: 1100px;
   margin: 0 auto;
   padding-bottom: 50px;
   overflow: hidden;
@@ -194,7 +205,7 @@ export default {
         .get("/report/report" + currentPage)
         .then(res => {
           {
-              (this.totalTableData = res.data.totalTableData),
+            (this.totalTableData = res.data.totalTableData),
               (this.classTableData = res.data.classTableData);
           }
         })
@@ -206,7 +217,7 @@ export default {
         .get("/report/" + value)
         .then(res => {
           // console.log(res),
-            (this.totalTableData = res.data.totalTableData),
+          (this.totalTableData = res.data.totalTableData),
             (this.classTableData = res.data.classTableData);
         })
         .catch(error => console.log(error));

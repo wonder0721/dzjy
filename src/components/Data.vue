@@ -1,44 +1,46 @@
 <template>
   <div class="data">
-    <div class="container-box">
-      <p class="platform">端州区网络阅卷平台</p>
-      <div class="content-box">
-        <el-breadcrumb separator="/" style="font-size: 16px;">
-          <el-breadcrumb-item :to="{ path: '/index' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item>学生基础数据录入</el-breadcrumb-item>
-        </el-breadcrumb>
+    <div class="wrapper">
+      <div class="container-box">
+        <p class="platform">端州区网络阅卷平台</p>
+        <div class="content-box">
+          <el-breadcrumb separator="/" style="font-size: 16px;">
+            <el-breadcrumb-item :to="{ path: '/index' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item>学生基础数据录入</el-breadcrumb-item>
+          </el-breadcrumb>
 
-        <el-button type="primary" style="margin: 20px 0; float:right">上传学生数据表格</el-button>
+          <el-button type="primary" style="margin: 20px 0; float:right">上传学生数据表格</el-button>
 
-        <el-table
-          :data="tableData"
-          style="width: 100%"
-          header-cell-class-name="table-header"
-          cell-class-name="table-cell"
-        >
-          <el-table-column prop="school" label="学校" width="220"></el-table-column>
-          <el-table-column prop="grade" label="年级" width="180"></el-table-column>
-          <el-table-column prop="class" label="班级" width="180"></el-table-column>
-          <el-table-column prop="name" label="姓名"></el-table-column>
-          <el-table-column prop="number" label="考号" width="180"></el-table-column>
-          <el-table-column prop="operate" label="操作" width="180">
-            <template>
-              <el-button size="mini" type="danger">删除</el-button>
-            </template>
-          </el-table-column>
-        </el-table>
+          <el-table
+            :data="tableData"
+            style="width: 100%"
+            header-cell-class-name="table-header"
+            cell-class-name="table-cell"
+          >
+            <el-table-column prop="school" label="学校" width="220"></el-table-column>
+            <el-table-column prop="grade" label="年级" width="180"></el-table-column>
+            <el-table-column prop="class" label="班级" width="180"></el-table-column>
+            <el-table-column prop="name" label="姓名"></el-table-column>
+            <el-table-column prop="number" label="考号" width="180"></el-table-column>
+            <el-table-column prop="operate" label="操作" width="150" fixed="right">
+              <template>
+                <el-button size="mini" type="danger">删除</el-button>
+              </template>
+            </el-table-column>
+          </el-table>
 
-        <div class="pagination">
-          <el-pagination
-            background
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page="currentPage1"
-            :page-sizes="[10, 20, 30, 40]"
-            :page-size="pagesize"
-            :total="50"
-            layout="prev, pager, next, sizes, jumper"
-          ></el-pagination>
+          <div class="pagination">
+            <el-pagination
+              background
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+              :current-page="currentPage1"
+              :page-sizes="[10, 20, 30, 40]"
+              :page-size="pagesize"
+              :total="50"
+              layout="prev, pager, next, sizes, jumper"
+            ></el-pagination>
+          </div>
         </div>
       </div>
     </div>
@@ -50,10 +52,14 @@
   background-color: #f0f2f5;
   min-height: 100%;
 }
-
+.wrapper {
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
 .container-box {
   width: 100%;
-  max-width: 950px;
+  max-width: 1100px;
   margin: 0 auto;
   overflow: hidden;
   padding-bottom: 50px;
@@ -99,27 +105,27 @@ export default {
       tableData: [],
       arr: [],
       currentPage1: 1,
-      pagesize: 5,
+      pagesize: 5
     };
   },
   methods: {
-    handleCurrentChange(currentPage){
-      console.log(currentPage)
+    handleCurrentChange(currentPage) {
+      console.log(currentPage);
       this.$axios
-      .get("/student/studentData"+currentPage)
-      .then(res => {
-        // console.log(this.tableData)
-        this.tableData = res.data;
-      })
-      .catch(err => console.log(err));
+        .get("/student/studentData" + currentPage)
+        .then(res => {
+          // console.log(this.tableData)
+          this.tableData = res.data;
+        })
+        .catch(err => console.log(err));
     },
-    handleSizeChange(size){
-      this.pagesize = size
-      console.log(this.pagesize)
+    handleSizeChange(size) {
+      this.pagesize = size;
+      console.log(this.pagesize);
     }
   },
   created() {
-    this.handleCurrentChange(1)
+    this.handleCurrentChange(1);
   }
 };
 </script>

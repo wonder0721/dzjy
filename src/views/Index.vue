@@ -45,7 +45,7 @@
   .platform {
     height: 50px;
     width: 100%;
-    margin-top: 25px;
+    margin-top: 50px;
     font-size: 40px;
     color: #5896ff;
     line-height: 50px;
