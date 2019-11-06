@@ -37,10 +37,24 @@
                 :value="item.value"
               ></el-option>
             </el-select>
+
+            <el-select
+              v-model="value3"
+              placeholder="请选择"
+              size="small"
+              @change="formChange(value3)"
+            >
+              <el-option
+                v-for="item in options3"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
+            </el-select>
           </div>
 
           <el-table
-            :data="totalTableData"
+            :data="titleTable"
             border
             style="width: 100%; margin-top: 20px;"
             header-cell-class-name="table-header"
@@ -70,23 +84,21 @@
             header-cell-class-name="table-header"
             cell-class-name="table-cell"
           >
-            <el-table-column prop="class" label="单位" width="110" fixed></el-table-column>
-            <el-table-column prop="a" label="实考" width="70"></el-table-column>
-            <el-table-column prop="b" label="平均分" width="70"></el-table-column>
-            <el-table-column prop="c" label="极均分" width="70"></el-table-column>
-            <el-table-column prop="d" label="最高分" width="70"></el-table-column>
-            <el-table-column prop="e" label="最低分" width="70"></el-table-column>
-            <el-table-column prop="f" label="全距" width="70"></el-table-column>
-            <el-table-column prop="g" label="得分率" width="70"></el-table-column>
-            <el-table-column prop="h" label="标准差" width="70"></el-table-column>
-            <el-table-column prop="i" label="众数" width="70"></el-table-column>
-            <el-table-column prop="j" label="贡献值" width="70"></el-table-column>
-            <el-table-column prop="k" label="超均率" width="70"></el-table-column>
-            <el-table-column prop="l" label="比均率" width="70"></el-table-column>
-            <el-table-column prop="m" label="优秀数" width="70"></el-table-column>
-            <el-table-column prop="n" label="优秀率" width="70"></el-table-column>
-            <el-table-column prop="o" label="及格数" width="70"></el-table-column>
-            <el-table-column prop="p" label="及格率" width="70"></el-table-column>
+            <el-table-column prop="className" label="班级" width="150" fixed></el-table-column>
+            <el-table-column prop="number" label="考号"></el-table-column>
+            <el-table-column prop="name" label="姓名" width="90"></el-table-column>
+            <el-table-column prop="fullScore" label="总分" width="90"></el-table-column>
+            <el-table-column label="总分排名">
+              <el-table-column prop="f-class" label="班" width="80"></el-table-column>
+              <el-table-column prop="f-grade" label="校" width="80"></el-table-column>
+              <el-table-column prop="f-com" label="连" width="80"></el-table-column>
+            </el-table-column>
+            <el-table-column prop="language" :label="subjectName" width="90"></el-table-column>
+            <el-table-column :label="subjectRank">
+              <el-table-column prop="l-class" label="班" width="80"></el-table-column>
+              <el-table-column prop="l-grade" label="校" width="80"></el-table-column>
+              <el-table-column prop="l-com" label="连" width="80"></el-table-column>
+            </el-table-column>
           </el-table>
 
           <div class="pagination">
@@ -144,7 +156,7 @@
       text-align: center;
       font-size: 16px;
       color: #444;
-      height: 60px;
+      height: 40px;
       font-weight: normal;
     }
     /deep/ .table-cell {
@@ -171,17 +183,34 @@
 export default {
   data() {
     return {
-      totalTableData: [],
+      titleTable: [],
+      titleArr: [],
+      titleNum: 0,
       classTableData: [],
       currentPage1: 1,
+      totalArr: [],
+      subjectName: '语文',
+      subjectRank: '语文排名',
       options1: [
         {
           value: "school_1",
-          label: "重庆市第一中学"
+          label: "加美学校中学部"
         },
         {
           value: "school_2",
-          label: "重庆市第十中学"
+          label: "端州中学"
+        },
+        {
+          value: "school_3",
+          label: "肇庆市颂德中学"
+        },
+        {
+          value: "school_4",
+          label: "肇庆市田家炳中学"
+        },
+        {
+          value: "school_5",
+          label: "肇庆市第四中学"
         }
       ],
       value1: "school_1",
@@ -195,53 +224,90 @@ export default {
           label: "数学"
         }
       ],
-      value2: "subject_1"
+      value2: "subject_1",
+      options3: [
+        {
+          value: "form_1",
+          label: "学生成绩表"
+        },
+        {
+          value: "form_2",
+          label: "总分分段表"
+        },
+        {
+          value: "form_3",
+          label: "试卷分析表"
+        },
+        {
+          value: "form_4",
+          label: "单科平均表"
+        },
+        {
+          value: "form_5",
+          label: "排名分析表"
+        },
+        {
+          value: "form_6",
+          label: "一分三率表"
+        }
+      ],
+      value3: "form_1",
     };
   },
   methods: {
     handleCurrentChange(currentPage) {
-      console.log(currentPage);
-      this.$axios
-        .get("/report/report" + currentPage)
-        .then(res => {
-          {
-            (this.totalTableData = res.data.totalTableData),
-              (this.classTableData = res.data.classTableData);
-          }
-        })
-        .catch(err => console.log(err));
+        this.classTableData = this.totalArr.slice(currentPage*10 - 10,currentPage*10)
     },
     schoolChange(value) {
       console.log("school has changed", value);
-      this.$axios
-        .get("/report/" + value)
-        .then(res => {
-          // console.log(res),
-          (this.totalTableData = res.data.totalTableData),
-            (this.classTableData = res.data.classTableData);
-        })
-        .catch(error => console.log(error));
+      this.getRandomArr()
     },
     subjectChange(value) {
       console.log("subject has changed", value);
-      this.$axios
-        .get("/report/" + value)
-        .then(res => {
-          console.log(res),
-            (this.totalTableData = res.data.totalTableData),
-            (this.classTableData = res.data.classTableData);
-        })
-        .catch(error => console.log(error));
+      if (value == 'subject_1'){
+        this.subjectName = '语文'
+        this.subjectRank = '语文成绩'
+      }
+      else{
+        this.subjectName = '数学'
+        this.subjectRank = '数学成绩'
+      }
+      this.getRandomArr()
+    },
+    formChange(value){
+      console.log("form has changed", value);
+      // this.getRandomArr()
+    },
+    getRandomArr(){
+      let arr = []
+      let num = Math.floor(Math.random()*(this.totalArr.length-10))
+      arr = this.totalArr.slice(num,num+10)
+      this.classTableData = arr
+      if (this.titleNum != 4){
+        this.titleNum ++
+      }
+      else{
+        this.titleNum = 0
+      }
+      this.titleTable.splice(0,1)
+      this.titleTable.push(this.titleArr[this.titleNum])
     }
   },
   created() {
     this.$axios
-      .get("/report/school_1")
+      .get("/report/titleTable")
       .then(res => {
-        console.log(res),
-          (this.totalTableData = res.data.totalTableData),
-          (this.classTableData = res.data.classTableData);
+        this.titleArr = res.data
+        this.titleTable.push(res.data[this.titleNum])
       })
+      .catch(error => console.log(error));
+
+      this.$axios
+      .get("/report/total")
+      .then(res => {
+        this.totalArr = res.data
+        this.handleCurrentChange(1)
+      })      
       .catch(error => console.log(error));
   }
 };

@@ -130,11 +130,11 @@
 export default {
   data() {
     return {
-      username: "",
-      password: "",
+      username: "18225602456",
+      password: "123456",
       loginForm: {
-        name: "",
-        password: "",
+        name: "18225602456",
+        password: "123456",
       },
        rules: {
           name: [

@@ -9,18 +9,18 @@
           </div>
           <div class="subtitle">学生数据录入</div>
         </router-link>
-        <router-link to="/paper" tag="div" class="card">
+        <a href="https://office.7net.cc/" tag="div" class="card">
           <div class="topicon">
             <img src="../assets/paper.png" alt />
           </div>
           <div class="subtitle">学生答卷扫描</div>
-        </router-link>
-        <router-link to="/teacher" tag="div" class="card">
+        </a>
+        <a href="https://office.7net.cc/" tag="div" class="card">
           <div class="topicon">
             <img src="../assets/teacher.png" alt />
           </div>
           <div class="subtitle">教师阅卷</div>
-        </router-link>
+        </a>
         <router-link to="/report" tag="div" class="card">
           <div class="topicon">
             <img src="../assets/report.png" alt />

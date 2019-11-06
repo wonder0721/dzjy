@@ -17,4 +17,20 @@ html,body{
   height: 100%;
   width: 100%;
 }
+::-webkit-scrollbar-track-piece { //滚动条凹槽的颜色，还可以设置边框属性
+  background-color:#f8f8f8;
+}
+::-webkit-scrollbar {//滚动条的宽度
+  width:8px;
+  height:8px;
+}
+::-webkit-scrollbar-thumb {//滚动条的设置
+  background-color:#ccc;
+  background-clip:padding-box;
+  min-height:28px;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color:#bbb;
+}
 </style>

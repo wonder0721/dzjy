@@ -20,12 +20,9 @@
             <el-table-column prop="school" label="学校" width="220"></el-table-column>
             <el-table-column prop="grade" label="年级" width="180"></el-table-column>
             <el-table-column prop="class" label="班级" width="180"></el-table-column>
-            <el-table-column prop="name" label="姓名"></el-table-column>
-            <el-table-column prop="number" label="考号" width="180"></el-table-column>
-            <el-table-column prop="operate" label="操作" width="150" fixed="right">
-              <template>
-                <el-button size="mini" type="danger">删除</el-button>
-              </template>
+            <el-table-column prop="number" label="考号"></el-table-column>
+            <!-- <el-table-column prop="number" label="考号" width="180"></el-table-column> -->
+            <el-table-column prop="name" label="姓名" width="150" fixed="right">
             </el-table-column>
           </el-table>
 
